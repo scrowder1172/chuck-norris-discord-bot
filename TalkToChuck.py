@@ -1,7 +1,7 @@
 import random
-
 import requests
 import os
+
 
 RAPID_API_KEY = os.getenv('RAPID_API_KEY')
 
