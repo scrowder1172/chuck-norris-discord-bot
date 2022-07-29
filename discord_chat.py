@@ -12,7 +12,7 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-  print('bot online')
+    print('bot online')
 
 
 @client.event
@@ -25,7 +25,6 @@ async def on_message(message):
 
     msg = str(message.content).lower()
     greeting_words = ['hello', 'hey', 'yo']
-    chuck_response = ""
 
     if "$categories" in msg.split():
         categories = ttc.get_categories()
@@ -45,19 +44,18 @@ async def on_message(message):
         await message.channel.send(chuck_response)
 
     category_found = False
-    chuck_says = None
+    joke = None
 
     if 'joke' in msg:
         for word in msg.split():
             categories = ttc.get_categories()
             if word in categories:
-                chuck_says = ttc.get_joke(category=word)
+                joke = ttc.get_joke(category=word)
                 category_found = True
         if not category_found:
-            chuck_says = ttc.get_random_joke()
-        chuck_response = f"Here's a {chuck_says['categories'][0]} joke that makes me laugh: {chuck_says['value']}"
-
-    await message.channel.send(chuck_response)
+            joke = ttc.get_random_joke()
+        chuck_response = f"Here's a {joke['categories'][0]} joke that makes me laugh: {joke['value']}"
+        await message.channel.send(chuck_response)
 
 
 keep_alive()
