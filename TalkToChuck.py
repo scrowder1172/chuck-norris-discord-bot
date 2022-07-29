@@ -66,6 +66,28 @@ def get_random_joke():
 	return random_joke
 
 
+def search_for_topic(search_term):
+	"""
+	Return a list of Chuck Norris-isms based off the search term
+	:param search_term: term to search for
+	:return: dictionary object with search results
+	"""
+
+	url = "https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/search"
+
+	querystring = {"query": search_term}
+
+	headers = {
+		"accept": "application/json",
+		"X-RapidAPI-Key": RAPID_API_KEY,
+		"X-RapidAPI-Host": "matchilling-chuck-norris-jokes-v1.p.rapidapi.com"
+	}
+
+	response = requests.request("GET", url, headers=headers, params=querystring)
+
+	return response.json()
+
+
 if __name__ == '__main__':
 	joke = get_random_joke()
 	print(joke)
