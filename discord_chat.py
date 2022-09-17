@@ -8,7 +8,7 @@ discord_bot_token = os.environ.get('DISCORD_CHUCK_NORRIS_BOT_TOKEN')
 discord_channel = os.environ.get('DISCORD_CHUCK_NORRIS_CHANNEL')
 
 client = discord.Client()
-
+print('hello')
 
 @client.event
 async def on_ready():
