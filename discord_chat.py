@@ -35,12 +35,12 @@ async def on_message(message):
         return
 
     if 'chuck' in msg.split():
-        chuck_response = f"That's Mr. Norris to you, {message.author}. I won't remind you again!"
+        chuck_response = f"That's Mr. Norris to you, <@{message.author.id}>. I won't remind you again!"
         await message.channel.send(chuck_response)
         return
 
     if any(word in msg for word in greeting_words):
-        chuck_response = f'Hello {message.author}!'
+        chuck_response = f'Hello <@{message.author.id}>!'
         await message.channel.send(chuck_response)
 
     category_found = False
